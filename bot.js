@@ -192,5 +192,65 @@ client.on("message", async message => {
     }
 });
 
+client.on("message",async message => {
+if(message.content === 'room'){
+let staff = message.guild.member(message.author).roles.find('name' ,"♛ 𝓣𝓗𝓔 𝓚𝓘𝓝𝓖 ♕");
+      if(!staff) return message.reply(`** لـسـه مـعـاك رتـب __♛ 𝓣𝓗𝓔 𝓚𝓘𝓝𝓖 ♕__ :x:**`)
+var shopc = message.guild.channels.find("name","التقديمات")
+  if(!shopc) return message.reply("**لأيــوجــد روم بــاســم __التقديمات__**")
+    let room = '';
+      let fillter = m => m.author.id === message.author.id
+      
+     
+
+      await message.channel.send("***اكـــتــب __everyone__ ***:pencil2:").then(e => {
+           message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
+})
+     .then(co => {
+       room = co.first().content;
+        co.first().delete();
+     
+let desc = '';
+        
+e.edit("***اكـــتــب __here__***:pencil2:").then(e => {
+  message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+     .then(co => {
+       desc = co.first().content;
+        co.first().delete();
+e.edit("Done").then(e => {
+  shopc.send(`***تـــقـــديــم الــى رتــب***:military_medal: 
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+***__مـلـى بـيــانـــات الـتـالـى__***
+
+**
+1- الاســـم :bust_in_silhouette: : [ الاجـابـه ]
+
+2- الـعـمـر حـقـيـقـى :calendar_spiral: : [ الاجـابـه ]
+
+3- اســم بــلــدك :flag_black: : [ الاجـابـه ]
+
+4- هـل ســحــتــرام الـقـوأنـيـن؟ :bookmark: : [ الاجـابـه ]
+
+5- مــده تـفـاعـلك :alarm_clock: : [ الاجـابـه ]
+**
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+***__بـــتــوافـــق الـى كـل الاعــضـاء__***
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+|| ${room}|| ||${desc} ||`)
+  })
+})
+  })
+})
+  })
+           
+      
+  
+     
+  
+      
+           
+}
+});
 
 client.login(process.env.BOT_TOKEN);
