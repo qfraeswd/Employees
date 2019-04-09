@@ -1,122 +1,196 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();// تم اصنع من اقبل : @⚔♚☛〖T̷u̷r̷k̷i̷  P̷a̷s̷h̷a̷  】☜♚⚓#8849 
-var prefix = "#";
+const client = new Discord.Client();
+var prefix = "!";
 
-client.on('message', fkk => {
-    if (fkk.content == "#كوره") {
-        var x = ["المتاح للجميع لا يتاح لي",
-"عقدت بطولة كأس الأمم الأفريقية الثالثة والعشرون",
-"حارس المرمى الوحيد الذي شارك فى 5 نهائيات لكأس العالم لكرة القدم هو",
-"أول نهائي لكأس أفريقية تحت الثلوج دار سنة 1988 ف في",
-"أول بلد طبق الطريقة الدفاعية فى كرة القدم الكاتناشيو هو",
-"أحرزت الكاميرون بطولة أفريقيا للأمم حتى سنة 2002 ف",
-"تأهل منتخب الكويت لكرة اليد لكأس العالم حتى سنة 2002 ف",
-"أقيم أول سباق للسيارات سنة 1894 ف فى",
-"8 Cool عدد حكام الساحة فى كرة اليد",
-"فاز بكأس آسيا عام 2000 فى بيروت",
-"اسكوبار هو الحارس الذى سجل خطأ فى مرمى فريقه فى",
-"تأسس الاتحاد الدولى لكرة القدم سنة",
-"المجر هو أول منتخب هزم انكلترا فى ويمبلى فى منديال",
-"أول منتخب يفوز بكأس العالم خارج قارته هو",
-"كرايتان الألمانى حكم مباراة الدور الربع النهائى بين انكلترا والبرازيل عام",
-"رقم دورة كأس العالم لكرة القدم 2002 ف هو",
-"الاسكواش رياضة نشأة فى السجون",
-"شاركت جنوب أفريقيا لأول مرة فى كأس أفريقيا بعد رفع الحظر عنها سنة",
-"اسم حارس مرمى كوستاريكا فى منديال 1990 ف هو",
-"تأسس الاتحاد الإنجليزي لكرة القدم سنة",
-"المنتخب صاحب المركز 17 فى منديال 1998 ف هو",
-"شاركت نيوزلندا المرة الوحيدة فى نهائيات كأس العالم سنة",
-"فى منديال 1982 ف ارتفع عدد المنتخبات إلى",
-"حكم واحد يكون فى مباراة كرة",
-"جان فانسان هو مدرب الكامرون فى منديال",
-"عدد المباريات التى خاضها ماتيوس فى منديال 1982 هو",
-"عدد المشاهدين الذين حضروا كأس العالم عام 1950 ف هو",
-"مارسيليا مدينة فرنسية أجريت نصف نهائى بين إيطاليا والبرازيل عام",
-"عدد الأهداف التى سجلها الألمانى ريدله فى منديال 1994 ف هو",
-"انجلترا هو المنتخب الوحيد الذى لم يخسر أمام البـرازيل فى منديـال",
-"عدد الأهداف التى سجلت فى مرمى البرازيل فى منديال 1994 ف",
-"السويد هو المنتخب الذى ألحق الخسارة الأولى لإيطاليا فى نهائيات كأس العالم وكان ذلك عام",
-"عدد مباريات بطولة كأس العالم لكرة القدم 2002 هو",
-"تأسس الاتحاد الألمانى لكرة القددم سنة",
-"الاعب البرتغالى الذى يحمل اسم عائلة فرنسية هو",
-"عدد الفرق المشاركة فى بطولة كأس العالم لكرة القدم 2002 ف هو",
-"يتألف فريق الهاند بول من",
-"عدد الأهداف التى سجلها بكتياور فى منديال 1966 ف",
-"أدركت أسبانيا الدور النصف النهائي لكأس العالم مرة واحدة سنة",
-"سرقت كأس العالم قبل أن يعثر عليها كلب مدرب سنة",
-];
-        var x2 = ['',
-		"2002",
-        "أنطونيو كاربخال",
-		"قسطنتينه",
-		"ايطاليا",
-		"4 مرات",
-		"4 مرات",
-		"فرنسا",
-		"اثنان",
-		"اليابان",
-		"1994",
-		"1904",
-		"1953",
-		"البرازيل",
-		"1966",
-		"17",
-		"البريطانية",
-		"1996",
-		"كوينخو",
-		"1863",
-		"أسبانيا",
-		"1982",
-		"24",
-		"الطائرة",
-		"1982",
-		"2",
-		"199954",
-		"1938",
-		"1",
-		"1958",
-		"3",
-		"1950",
-		"64",
-		"1900",
-		"بوتى",
-		"32",
-		"11",
-		"4",
-		"1950",
-		"1966",
-		
-        
-        
-        
-        ];
-        
-        var x3 = Math.floor(Math.random()*x.length)
-        fkk.channel.send(`╔════════【۩ :soccer: :trophy:  ***__ يلا كوره __*** :trophy: :soccer:  ۩】════════╗
+
+client.on("message", message => {
+            if(message.content.startsWith("!تقديم")) {
+        if(!message.channel.guild) return;
+                if(message.author.bot) return;
+        let channel = message.guild.channels.find("name", "التقديمات")
+            if(!channel) return message.reply("**لانشاء روم التقديمات #room1 من فضلك اكتب الامر**")
+            if(channel) {
+            message.channel.send( message.member + ', **:timer:**').then( (m) =>{
+              m.edit( message.member + ', **اسمك الحقيقى  ✍**' )
+              m.channel.awaitMessages( m1 => m1.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m1) => {
+                  m1 = m1.first();
+                  var name = m1.content;
+                  m1.delete();
+                  m.edit(message.member + ', **:timer:**').then( (m) =>{
+                      m.edit( message.member + ', **عندك كام سنة 🎓**' )
+                      setTimeout(() => {
+                        m.delete()
+                      }, 10000);
+                      m.channel.awaitMessages( m2 => m2.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m2) => {
+                          m2 = m2.first();
+                          var age = m2.content;
+                          m2.delete()
+                          message.channel.send( message.member + ', **:timer:**').then( (m) =>{
+                            m.edit( message.member + ', **هل تتفاعل في الرتبه🎙**' )
+                            setTimeout(() => {
+                              m.delete()
+                            }, 10000);
+                            m.channel.awaitMessages( m1 => m1.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m3) => {
+                                m3 = m3.first();
+                                var ask = m3.content;
+                                m3.delete();
+                                message.channel.send( message.member + ', **:timer:**').then( (m) =>{
+                                  m.edit( message.member + ', **هل ستحترم القوانين ؟ 📑**' )
+                                  setTimeout(() => {
+                                    m.delete()
+                                  }, 10000);
+                                  m.channel.awaitMessages( m1 => m1.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m4) => {
+                                      m4 = m4.first();
+                                      var ask2 = m4.content;
+                                      m4.delete();
+                                      message.channel.send( message.member + ', **:timer:**').then( (m) =>{
+                                        m.edit( message.member + ', **لــمــاذ الازم ان نـقــبـلك 🤔**' )
+                                        m.channel.awaitMessages( m1 => m1.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m5) => {
+                                            m5 = m5.first();
+                                            var ask3 = m5.content;
+                                            m5.delete();
+                      m.edit(message.member + ', **....جارى جمع البيانات**').then( (mtime)=>{
+                        setTimeout(() => {
+                          let embed = new Discord.RichEmbed()
+                        .setColor('RANDOM')
+                        .setTitle(`**تقديم على رتبه** [__**${message.guild.name}**__]`)
+                        .addField('**`الاسم`**', `${name}` , true)
+                        .addField('**`العمر`**', `${age}` , true)
+                        .addField('**`هل سيتفاعل ؟`**',`${ask}`)
+                        .addField('**`هل سيحترم القوانين ؟`**',`${ask2}`)
+                        .addField('**`لماذا يجب علينا قبوله|وماهى الرتبه العوزها؟`**',`${ask3}`)
+                        .setFooter(message.author.username,'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')
+                        channel.send(embed)
+                        }, 2500);
+                        setTimeout(() => {
+                          mtime.delete()
+                        }, 3000);
  
-***${x[x3]}***
-
-=====================================
-
-**__لديك 15 ثانية للاجابة __**
-╚════════════════════════════════════╝`).then(msg1=> {
-            var r = fkk.channel.awaitMessages(msg => msg.content == x2[x3], {
-                maxMatches : 1,
-                time : 15000,
-                errors : ['https://cdn.discordapp.com/attachments/429330153735454722/430040652542246912/bbcb4aa9853bf1d2.png']
+                  })
+                })
+                })
+              })
             })
-        r.catch(() => {
-            return fkk.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
-            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)
+          })
         })
-        
-        r.then((collected)=> {
-            fkk.channel.send(`${collected.first().author} :soccer: ** اجابه صحيح معلم كوره ** :soccer: `);
         })
+              })
+          })
         })
     }
+}
+        });
+
+        client.on('message', message=>{
+            if(message.content.startsWith("!room1")) {
+            if(!message.channel.guild) return;
+                if(message.author.bot) return;
+                if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
+                message.guild.createChannel("التقديمات", "text").then(c =>{
+                    c.overwritePermissions(message.guild.id, {
+                        SEND_MESSAGES: false
+ 
+                          })
+                })
+    message.channel.send("**✅ تم انشاء روم التقديمات بنجاح**")
+            }
+            })
+    client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let role = message.content.split(" ").slice(2).join(" ");
+  let mySupport = message.guild.roles.find('name',role);
+  if(message.content.startsWith("!قبول")) {
+    let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
+    if(!acRoom) return message.reply("!setac2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
+    if(acRoom) {
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+    if(!mention) return message.reply('**__مـشــيـن شـخـص__**:bust_in_silhouette:');
+    if(!role) return message.reply('**__دخـل اسـم رتـب__**:pencil:');
+    if(!mySupport) return message.reply('**__هـذا رتــب غـيـر مـواجـد__**:x: ');
+    if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
+ 
+    mention.addRole(mySupport).then(() => {
+      acRoom.send(`**[ ${mySupport} :paperclip: ] واعطائك رتبة [⇛ ${mention} ⇚] تــم قـبـوالـك  :white_check_mark:**`);
+    });
+  }
+}
+});
+client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  if(message.content.startsWith("!رفض")) {
+  if(!message.channel.guild) return;
+  let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
+  if(!acRoom) return message.reply("!setac2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
+  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+  if(!mention) return message.reply("منشن شخص");
+ 
+  acRoom.send(`**${mention} تــم رافــضــك الاســف :x:**`)
+  }
+});
+          client.on('message', message=>{
+            if(message.content.startsWith("!room2")) {
+         if(!message.channel.guild) return;
+                if(message.author.bot) return;
+                if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
+                message.guild.createChannel("القبول-الرفض", "text").then(c =>{
+                    c.overwritePermissions(message.guild.id, {
+                        SEND_MESSAGES: false
+ 
+                          })
+                })
+    message.channel.send("**✅ تم انشاء روم القبول والرفض بنجاح**")
+            }
 })
 
+const adminprefix = "!";
+const devs = ['564414567946387487','532592989789487104']
+client.on('message', message => {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+   
+if (message.content.startsWith(adminprefix + 'setgame')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(`**__${argresult}__تـم تـغـيـر بـلانـيـق الـى:large_blue_circle:**`)
+} else
+  if (message.content.startsWith(adminprefix + 'setname')) {
+client.user.setUsername(argresult).then
+    message.channel.sendMessage(`**__${argresult}__تـم تـغـيـر اســم الـى**:pencil:`)
+return message.reply("**لايـمـكـن تـغـيـر اسـم الان نـتـظـار سـاعـتـان**:stopwatch: ");
+} else
+  if (message.content.startsWith(adminprefix + 'setavatar')) {
+client.user.setAvatar(argresult);
+  message.channel.sendMessage(`**__${argresult}__تــم تــغـيــر صــور الـى :camera_with_flash:**`);
+      } else    
+if (message.content.startsWith(adminprefix + 'setT')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/idk");
+    message.channel.sendMessage(`**__${argresult}__ تــم تـغــيــر حــالـه الــى :red_circle:**`)
+}
+});
 
-// تم اصنع من اقبل : @⚔♚☛〖T̷u̷r̷k̷i̷  P̷a̷s̷h̷a̷  】☜♚⚓#8849 
-client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
+client.on("message", async message => {
+    if(message.content.startsWith(prefix + "Ex")) {
+        let Ex = new Discord.RichEmbed()
+            .setColor("RANDOM")
+            .setThumbnail(message.author.avatarURL)
+            .setDescription(`**__اوامـــر تــغـيـر احـلات بـوت + صـور + اسـم__**
+			▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+			***
+			1-${prefix}setgame = الى تـغـيـر حـالـه الـى بـلانـيـق [ :large_blue_circle: ]
+			
+			2-${prefix}setT = الـى تـغـيـر حـالـه الــى تـويـتـش [ :red_circle: ]
+			
+			3-${prefix}setavatar = الـى تـغـيـر صـور [ :camera_with_flash: ]
+			
+			4-${prefix}setname = الـى تـغـيـر اسـم [ :pencil: ]
+			***
+			▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+			**__مـسـوالـيـن تـغـيـر__**
+			▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+			1-! ➹⎛ トゥルキパシャ ⎞♔ ❥ 
+			2-Mr!Zeꙃo`);
+            message.channel.sendEmbed(Ex);
+    }
+});
+
+
+client.login(process.env.BOT_TOKEN);
