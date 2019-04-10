@@ -257,7 +257,7 @@ e.edit("Done").then(e => {
   let mention = message.mentions.members.first();
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
-  if(message.content.startsWith("!قبول وسيط")) {
+  if(message.content.startsWith("!مقبول")) {
     let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
     if(!acRoom) return message.reply("!setac من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
     if(acRoom) {
