@@ -8,7 +8,7 @@ client.on("message", message => {
         if(!message.channel.guild) return;
                 if(message.author.bot) return;
         let channel = message.guild.channels.find("name", "التقديمات")
-            if(!channel) return message.reply("**لانشاء روم التقديمات #room1 من فضلك اكتب الامر**")
+            if(!channel) return message.reply("**لانشاء روم التقديمات !room1 من فضلك اكتب الامر**")
             if(channel) {
             message.channel.send( message.member + ', **:timer:**').then( (m) =>{
               m.edit( message.member + ', **اسمك الحقيقى  ✍**' )
@@ -120,7 +120,7 @@ client.on('message',async message => {
   if(message.content.startsWith("!رفض")) {
   if(!message.channel.guild) return;
   let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
-  if(!acRoom) return message.reply("!setac2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
+  if(!acRoom) return message.reply("!room2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن شخص");
  
@@ -280,7 +280,7 @@ e.edit("Done").then(e => {
   let mySupport = message.guild.roles.find('name',role);
   if(message.content.startsWith("!ترقيه")) {
     let acRoom = message.guild.channels.find('name', 'ترقيه');
-    if(!acRoom) return message.reply("** رجــاء اصــنــع شــات تـرقـيه **");
+    if(!acRoom) return message.reply("** !room3 رجـاء مـنـك اصنع شات ترقيه واكتب امر  **");
     if(acRoom) {
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
     if(!mention) return message.reply('** مـشـيـن شـخـص **');
@@ -294,5 +294,20 @@ e.edit("Done").then(e => {
   }
 }
 });
+
+          client.on('message', message=>{
+            if(message.content.startsWith("!room3")) {
+         if(!message.channel.guild) return;
+                if(message.author.bot) return;
+                if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
+                message.guild.createChannel("ترقيه", "text").then(c =>{
+                    c.overwritePermissions(message.guild.id, {
+                        SEND_MESSAGES: false
+ 
+                          })
+                })
+    message.channel.send("**✅ تم انشاء روم ترقيه بنجاح**")
+            }
+})
 
 client.login(process.env.BOT_TOKEN);
