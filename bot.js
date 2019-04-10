@@ -274,4 +274,25 @@ e.edit("Done").then(e => {
 }
 });
 
+    client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let role = message.content.split(" ").slice(2).join(" ");
+  let mySupport = message.guild.roles.find('name',role);
+  if(message.content.startsWith("!ترقيه")) {
+    let acRoom = message.guild.channels.find('name', 'ترقيه');
+    if(!acRoom) return message.reply("** رجــاء اصــنــع شــات تـرقـيه **");
+    if(acRoom) {
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+    if(!mention) return message.reply('** مـشـيـن شـخـص **');
+    if(!role) return message.reply('**__دخـل اسـم رتـب ترقيه__**:shield:');
+    if(!mySupport) return message.reply('**__هـذا رتـب غـيـر مـوجـد__**:x:');
+    if(mention.roles.has(mySupport)) return message.reply('**__هـذا شخـص مـعـه رتـب__**:bust_in_silhouette:');
+ 
+    mention.addRole(mySupport).then(() => {
+      acRoom.send(`**[ ${mySupport} ] واعطائك رتبة [ ${mention} ] تـم ترقيتك**`);
+    });
+  }
+}
+});
+
 client.login(process.env.BOT_TOKEN);
