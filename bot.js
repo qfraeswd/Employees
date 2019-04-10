@@ -253,4 +253,25 @@ e.edit("Done").then(e => {
 }
 });
 
+    client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let role = message.content.split(" ").slice(2).join(" ");
+  let mySupport = message.guild.roles.find('name',role);
+  if(message.content.startsWith("!قبول")) {
+    let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
+    if(!acRoom) return message.reply("!setac من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
+    if(acRoom) {
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+    if(!mention) return message.reply('منشن شخص');
+    if(!role) return message.reply('**__دخـل اسـم رتـب وسـيـط__**:shield:');
+    if(!mySupport) return message.reply('**__هـذا رتـب غـيـر مـوجـد__**:x:');
+    if(mention.roles.has(mySupport)) return message.reply('**__هـذا شخـص مـعـه رتـب__**:bust_in_silhouette:');
+ 
+    mention.addRole(mySupport).then(() => {
+      acRoom.send(`**[ ${mySupport} ] واعطائك رتبة [ ${mention} ] تـم قـبوالـك كـا وسـيـط**`);
+    });
+  }
+}
+});
+
 client.login(process.env.BOT_TOKEN);
