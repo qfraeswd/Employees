@@ -44,7 +44,7 @@ client.on("message", message => {
                                       var ask2 = m4.content;
                                       m4.delete();
                                       message.channel.send( message.member + ', **:timer:**').then( (m) =>{
-                                        m.edit( message.member + ', **لــمــاذ الازم ان نـقــبـلك 🤔**' )
+                                        m.edit( message.member + ', **لماذا يجب علينا ان نقبلك ؟ وما هي الرتبه العوزها 🤔**' )
                                         m.channel.awaitMessages( m1 => m1.author == message.author,{ maxMatches: 1, time: 60*1000 } ).then ( (m5) => {
                                             m5 = m5.first();
                                             var ask3 = m5.content;
@@ -101,16 +101,16 @@ client.on("message", message => {
   let mySupport = message.guild.roles.find('name',role);
   if(message.content.startsWith("!قبول")) {
     let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
-    if(!acRoom) return message.reply("!setac2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
+    if(!acRoom) return message.reply("$!setac من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
     if(acRoom) {
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-    if(!mention) return message.reply('**__مـشــيـن شـخـص__**:bust_in_silhouette:');
-    if(!role) return message.reply('**__دخـل اسـم رتـب__**:pencil:');
-    if(!mySupport) return message.reply('**__هـذا رتــب غـيـر مـواجـد__**:x: ');
+    if(!mention) return message.reply('منشن شخص');
+    if(!role) return message.reply('ادخل اسم رتبة');
+    if(!mySupport) return message.reply('هذه الرتبة غير موجودة');
     if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
  
     mention.addRole(mySupport).then(() => {
-      acRoom.send(`**[ ${mySupport} :paperclip: ] واعطائك رتبة [⇛ ${mention} ⇚] تــم قـبـوالـك  :white_check_mark:**`);
+      acRoom.send(`**[ ${mySupport} ] واعطائك رتبة ${mention} تم بنجاح قبولك**`);
     });
   }
 }
@@ -120,11 +120,11 @@ client.on('message',async message => {
   if(message.content.startsWith("!رفض")) {
   if(!message.channel.guild) return;
   let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
-  if(!acRoom) return message.reply("!setac2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
+  if(!acRoom) return message.reply("!!setac من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن شخص");
  
-  acRoom.send(`**${mention} تــم رافــضــك الاســف :x:**`)
+  acRoom.send(`**${mention} تم رفضك للاسف**`)
   }
 });
           client.on('message', message=>{
@@ -141,116 +141,5 @@ client.on('message',async message => {
     message.channel.send("**✅ تم انشاء روم القبول والرفض بنجاح**")
             }
 })
-
-const adminprefix = "!";
-const devs = ['564414567946387487','532592989789487104']
-client.on('message', message => {
-  var argresult = message.content.split(` `).slice(1).join(' ');
-    if (!devs.includes(message.author.id)) return;
-   
-if (message.content.startsWith(adminprefix + 'setgame')) {
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**__${argresult}__تـم تـغـيـر بـلانـيـق الـى:large_blue_circle:**`)
-} else
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**__${argresult}__تـم تـغـيـر اســم الـى**:pencil:`)
-return message.reply("**لايـمـكـن تـغـيـر اسـم الان نـتـظـار سـاعـتـان**:stopwatch: ");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**__${argresult}__تــم تــغـيــر صــور الـى :camera_with_flash:**`);
-      } else    
-if (message.content.startsWith(adminprefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**__${argresult}__ تــم تـغــيــر حــالـه الــى :red_circle:**`)
-}
-});
-
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "Ex")) {
-        let Ex = new Discord.RichEmbed()
-            .setColor("RANDOM")
-            .setThumbnail(message.author.avatarURL)
-            .setDescription(`**__اوامـــر تــغـيـر احـلات بـوت + صـور + اسـم__**
-			▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-			***
-			1-${prefix}setgame = الى تـغـيـر حـالـه الـى بـلانـيـق [ :large_blue_circle: ]
-			
-			2-${prefix}setT = الـى تـغـيـر حـالـه الــى تـويـتـش [ :red_circle: ]
-			
-			3-${prefix}setavatar = الـى تـغـيـر صـور [ :camera_with_flash: ]
-			
-			4-${prefix}setname = الـى تـغـيـر اسـم [ :pencil: ]
-			***
-			▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-			**__مـسـوالـيـن تـغـيـر__**
-			▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-			1-! ➹⎛ トゥルキパシャ ⎞♔ ❥ 
-			2-Mr!Zeꙃo`);
-            message.channel.sendEmbed(Ex);
-    }
-});
-
-client.on("message",async message => {
-if(message.content === 'room'){
-let staff = message.guild.member(message.author).roles.find('name' ,"♛ 𝓣𝓗𝓔 𝓚𝓘𝓝𝓖 ♕");
-      if(!staff) return message.reply(`** لـسـه مـعـاك رتـب __♛ 𝓣𝓗𝓔 𝓚𝓘𝓝𝓖 ♕__ :x:**`)
-var shopc = message.guild.channels.find("name","التقديمات")
-  if(!shopc) return message.reply("**لأيــوجــد روم بــاســم __التقديمات__**")
-    let room = '';
-      let fillter = m => m.author.id === message.author.id
-      
-     
-
-      await message.channel.send("***اكـــتــب __everyone__ ***:pencil2:").then(e => {
-           message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
-})
-     .then(co => {
-       room = co.first().content;
-        co.first().delete();
-     
-let desc = '';
-        
-e.edit("***اكـــتــب __here__***:pencil2:").then(e => {
-  message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-     .then(co => {
-       desc = co.first().content;
-        co.first().delete();
-e.edit("Done").then(e => {
-  shopc.send(`***تـــقـــديــم الــى رتــب***:military_medal: 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-***__مـلـى بـيــانـــات الـتـالـى__***
-
-**
-1- الاســـم :bust_in_silhouette: :  ؟الاجـابـه
-
-2- الـعـمـر حـقـيـقـى :calendar_spiral: :  ؟الاجـابـه
-
-3- اســم بــلــدك :flag_black: :  ؟الاجـابـه
-
-4- هـل ســحــتــرام الـقـوأنـيـن؟ :bookmark: :  ؟الاجـابـه
-
-5- مــده تـفـاعـلك :alarm_clock: :  ؟الاجـابـه
-**
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-***__بـــتــوافـــق الـى كـل الاعــضـاء__***
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-|| ${room}|| ||${desc} ||`)
-  })
-})
-  })
-})
-  })
-           
-      
-  
-     
-  
-      
-           
-}
-});
 
 client.login(process.env.BOT_TOKEN);
